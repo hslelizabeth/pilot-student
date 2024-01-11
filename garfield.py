@@ -78,21 +78,40 @@ class toHex(Bot):
         while a != 0:
             b = a % 16
             a = a // 16
+            numbers = {
+                10 : 'a',
+                11 : 'b',
+                12 : 'c',
+                13 : 'd',
+                14 : 'e',
+                15 : 'f'
+            }
             if b < 10:
                 hex = str(b) + hex
-            elif b == 10 :
-                hex = 'a' + hex
-            elif b == 11 :
-                hex = 'b' + hex
-            elif b == 12 :
-                hex = 'c' + hex
-            elif b == 13 :
-                hex = 'd' + hex
-            elif b == 14 :
-                hex = 'e' + hex
+            #elif b == 10 :
+            #    hex = 'a' + hex
+            #elif b == 11 :
+            #    hex = 'b' + hex
+            #elif b == 12 :
+            #    hex = 'c' + hex
+            #elif b == 13 :
+            #    hex = 'd' + hex
+            #elif b == 14 :
+            #    hex = 'e' + hex
             else :
-                hex = 'f' + hex
+                hex = numbers.get(b) + hex
         return f"The number in hex is {hex}."
+    
+    def run(self):
+        sleep(Bot.wait)
+        while True:
+            print(self._format(self.q))
+            self.a = input()
+            if self.a in ['x', 'q', 'exit', 'quit']:
+                break
+            else:
+                sleep(Bot.wait)
+                print(self._format(self._think(self.a)))
     
 class Garfield:
     def __init__(self, wait=0.5):
